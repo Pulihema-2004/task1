@@ -1,0 +1,51 @@
+package com.apexplanet.hellointernship
+
+import android.os.Bundle
+import android.graphics.Color
+import android.view.Gravity
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Parent LinearLayout
+        val layout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            gravity = Gravity.CENTER
+            setBackgroundColor(Color.parseColor("#FFFFFF"))
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            setPadding(32, 32, 32, 32)
+        }
+
+        // TextView
+        val helloText = TextView(this).apply {
+            text = "Hello, Intern!"
+            textSize = 24f
+            setTextColor(Color.BLACK)
+            setPadding(0, 0, 0, 32)
+        }
+
+        // Button
+        val helloButton = Button(this).apply {
+            text = "Click Me!"
+            setOnClickListener {
+                helloText.text = "Welcome to ApexPlanet Internship!"
+            }
+        }
+
+        // Add views to layout
+        layout.addView(helloText)
+        layout.addView(helloButton)
+
+        // Set the layout as the content view
+        setContentView(layout)
+    }
+}
